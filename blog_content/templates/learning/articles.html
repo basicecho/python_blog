@@ -1,0 +1,18 @@
+{% extends 'learning/base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+  <a href="{% url 'blog_content:new_article' %}" class="btn btn-primary mb-3">Add a New Article</a>
+
+  <div class="list-group">
+    {% for article in articles %}
+      <div class="list-group-item">
+        <h5 class="mb-1"><a href="{% url 'blog_content:article' article.id %}">{{ article.title }}</a></h5>
+        <p class="mb-1"><strong>description:  </strong> {{ article.description }}</p>
+      </div>
+    {% empty %}
+      <p>No articles have been added yet.</p>
+    {% endfor %}
+  </div>
+</div>
+{% endblock content %}
